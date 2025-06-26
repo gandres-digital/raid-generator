@@ -20,7 +20,7 @@ const classTalents: Record<string, string[]> = {
   Shaman: ['Elemental', 'Enhancement', 'Restoration'],
   Mage: ['Arcane', 'Fire', 'Frost'],
   Warlock: ['Affliction', 'Demonology', 'Destruction'],
-  Druid: ['Balance', 'Feral', 'Restoration'],
+  Druid: ['Balance', 'Feral', 'Feral Tank', 'Restoration'],
 };
 
 const gearScore = [1400, 1450, 1500, 1550, 1600];
