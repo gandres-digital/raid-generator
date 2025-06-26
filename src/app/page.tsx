@@ -23,6 +23,7 @@ const classTalents: Record<string, string[]> = {
   Druid: ['Balance', 'Feral', 'Restoration'],
 };
 
+const gearScore = [1400, 1450, 1500, 1550, 1600];
 
 const FormularioPersonaje: FC = () => {
   const { register, handleSubmit, watch, reset, resetField, formState: { errors } } = useForm<FormData>();
@@ -85,8 +86,17 @@ const FormularioPersonaje: FC = () => {
             ))}
         </select>
 
-        <input {...register('gs', { required: true, valueAsNumber: true, min: 1300, max: 2000 })} type="number" placeholder="GearScore" className="p-2 border" />
-        {errors.gs && <span className="text-red-600">Field required, min 1400 GS and valid value</span>}
+        <select
+          {...register('gs', { required: true, valueAsNumber: true})}
+          className="border p-2 w-full cursor-pointer"
+        >
+          <option className='bg-blue-600' value="">Select GearScore</option>
+          {gearScore.map((gs) => (
+            <option className='bg-blue-500' key={gs} value={gs}>
+              {gs}
+            </option>
+          ))}
+        </select>
 
         <button disabled={!registrationOpen} type="submit" className="bg-blue-600 text-white px-4 py-2 cursor-pointer">Send</button>
       </form>
