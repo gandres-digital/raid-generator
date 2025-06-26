@@ -71,6 +71,7 @@ const FormularioPersonaje: FC = () => {
             </option>
           ))}
         </select>
+        {errors.mainclass && <span className="text-red-600">Field required</span>}
 
         <select
           {...register('talent', { required: true })}
@@ -85,6 +86,7 @@ const FormularioPersonaje: FC = () => {
               </option>
             ))}
         </select>
+        {errors.talent && <span className="text-red-600">Field required</span>}
 
         <select
           {...register('gs', { required: true, valueAsNumber: true})}
@@ -97,6 +99,7 @@ const FormularioPersonaje: FC = () => {
             </option>
           ))}
         </select>
+        {errors.gs && <span className="text-red-600">Field required</span>}
 
         <button disabled={!registrationOpen} type="submit" className="bg-blue-600 text-white px-4 py-2 cursor-pointer">Send</button>
       </form>
