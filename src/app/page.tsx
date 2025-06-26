@@ -63,7 +63,7 @@ const FormularioPersonaje: FC = () => {
           {...register('mainclass', { required: true })}
           className="border p-2 w-full"
         >
-          <option className='bg-blue-600' value="">Selecciona clase</option>
+          <option className='bg-blue-600' value="">Select class</option>
           {Object.keys(classTalents).map((cls) => (
             <option className='bg-blue-500' key={cls} value={cls}>
               {cls}
@@ -76,7 +76,7 @@ const FormularioPersonaje: FC = () => {
           disabled={!mainclass}
           className="border p-2 w-full"
         >
-          <option className='bg-blue-600' value="">Selecciona talento</option>
+          <option className='bg-blue-600' value="">Select talents</option>
           {mainclass &&
             classTalents[mainclass]?.map((talent) => (
               <option className='bg-blue-500' key={talent} value={talent}>
