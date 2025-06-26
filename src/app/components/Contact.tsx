@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { getRegistrationStatus } from '@/lib/config';
 import { normalizeName } from '@/lib/normalizeName'
