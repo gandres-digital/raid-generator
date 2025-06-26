@@ -1,7 +1,8 @@
 'use client';
 
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { getRegistrationStatus } from '@/lib/config';
 
 type FormData = {
   name: string;
@@ -26,6 +27,7 @@ const classTalents: Record<string, string[]> = {
 const FormularioPersonaje: FC = () => {
   const { register, handleSubmit, watch, reset, resetField, formState: { errors } } = useForm<FormData>();
   const mainclass = watch('mainclass');
+  const [registrationOpen, setRegistrationOpen] = useState(false);
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     await fetch('/api/submit', {
@@ -40,6 +42,14 @@ const FormularioPersonaje: FC = () => {
   useEffect(() => {
     resetField('talent');
   }, [mainclass]);
+
+  useEffect(() => {
+    async function fetchStatus() {
+      const status = await getRegistrationStatus();
+      setRegistrationOpen(status);
+    }
+    fetchStatus();
+  }, []);
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-6 bg-black">
@@ -78,7 +88,7 @@ const FormularioPersonaje: FC = () => {
         <input {...register('gs', { required: true, valueAsNumber: true, min: 1300, max: 2000 })} type="number" placeholder="GearScore" className="p-2 border" />
         {errors.gs && <span className="text-red-600">Field required, min 1400 GS and valid value</span>}
 
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2">Send</button>
+        <button disabled={!registrationOpen} type="submit" className="bg-blue-600 text-white px-4 py-2">Send</button>
       </form>
     </main>
   );
