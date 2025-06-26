@@ -88,7 +88,7 @@ const FormularioPersonaje: FC = () => {
         <input {...register('gs', { required: true, valueAsNumber: true, min: 1300, max: 2000 })} type="number" placeholder="GearScore" className="p-2 border" />
         {errors.gs && <span className="text-red-600">Field required, min 1400 GS and valid value</span>}
 
-        <button disabled={!registrationOpen} type="submit" className="bg-blue-600 text-white px-4 py-2">Send</button>
+        <button disabled={!registrationOpen} type="submit" className="bg-blue-600 text-white px-4 py-2 cursor-pointer">Send</button>
       </form>
     </main>
   );
